@@ -16,6 +16,7 @@ public abstract class Bird extends Animal implements Serializable{
     }
 
     public void setColor(String color) {
+        System.out.println("What's my color? ");
         this.color = color;
     }
 

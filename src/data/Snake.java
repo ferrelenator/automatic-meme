@@ -10,12 +10,15 @@ public class Snake extends Reptile implements Serializable{
         super(skin, name, price);
         this.venomous = venomous;
     }
-
+    
+    public Snake(){};
+    
     public boolean isVenomous() {
         return venomous;
     }
 
-    public void setVenomous(boolean venomous) {
+    public void setVenomous( boolean venomous) {
+        
         this.venomous = venomous;
     }
 

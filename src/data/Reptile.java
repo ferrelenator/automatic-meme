@@ -11,11 +11,14 @@ public abstract class Reptile extends Animal implements Serializable {
         this.skin = skin;
     }
 
+    public Reptile(){};
+    
     public String getSkin() {
         return skin;
     }
 
     public void setSkin(String skin) {
+        
         this.skin = skin;
     }
 

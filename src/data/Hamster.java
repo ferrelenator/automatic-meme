@@ -16,6 +16,7 @@ public class Hamster extends SmallPet implements Serializable {
     }
 
     public void setHair(String hair) {
+        System.out.println("Is my hair short, medium or long?");
         this.hair = hair;
     }
 

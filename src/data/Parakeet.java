@@ -16,6 +16,7 @@ public class Parakeet extends Bird implements Serializable{
     }
 
     public void setChirping(String chirping) {
+        System.out.println("Chirp loud, medium or soft?");
         this.chirping = chirping;
     }
 

@@ -16,6 +16,7 @@ public abstract class SmallPet extends Animal implements Serializable{
     }
 
     public void setSize(int size) {
+        System.out.println("What's my size(in centimeters)?");
         this.size = size;
     }
     

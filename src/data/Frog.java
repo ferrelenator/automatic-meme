@@ -16,6 +16,7 @@ public class Frog extends Reptile implements Serializable {
     }
 
     public void setFood(String food) {
+        System.out.println("What's my favorite food? ");
         this.food = food;
     }
 

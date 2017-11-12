@@ -16,6 +16,7 @@ public class Canary extends Bird implements Serializable {
     }
 
     public void setFavoriteTune(String favoriteTune) {
+        System.out.println("What's my favorite tune? ");
         this.favoriteTune = favoriteTune;
     }
 

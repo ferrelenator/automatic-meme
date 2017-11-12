@@ -16,6 +16,7 @@ public class GuineaPig extends SmallPet implements Serializable{
     }
 
     public void setLifeSpan(String lifeSpan) {
+        System.out.println("How much is my lifespan? ");
         this.lifeSpan = lifeSpan;
     }
 
