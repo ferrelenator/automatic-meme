@@ -19,7 +19,7 @@ public class PetStoreTest {
         Scanner scanner = new Scanner(System.in);
         ArrayList<Animal> Animals = new ArrayList<>();
         try{
-        fileStream = new FileOutputStream("mascotas.obj");
+        fileStream = new FileOutputStream("C:\\Users\\ferre\\Documents\\NetBeansProjects\\TiendaDeAnimales\\mascotas.db");
         ObjectOutputStream os = new ObjectOutputStream(fileStream);
         
         
