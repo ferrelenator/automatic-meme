@@ -1,6 +1,8 @@
 package data;
 
-public class Frog extends Reptile {
+import java.io.Serializable;
+
+public class Frog extends Reptile implements Serializable {
     
     private String food;
 

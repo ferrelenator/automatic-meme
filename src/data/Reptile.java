@@ -1,6 +1,8 @@
 package data;
 
-public abstract class Reptile extends Animal {
+import java.io.Serializable;
+
+public abstract class Reptile extends Animal implements Serializable {
     
     private String skin;
 

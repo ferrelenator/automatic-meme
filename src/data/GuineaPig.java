@@ -1,6 +1,8 @@
 package data;
 
-public class GuineaPig extends SmallPet{
+import java.io.Serializable;
+
+public class GuineaPig extends SmallPet implements Serializable{
     
     private String lifeSpan;
 

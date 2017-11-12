@@ -1,6 +1,8 @@
 package data;
 
-public class Canary extends Bird {
+import java.io.Serializable;
+
+public class Canary extends Bird implements Serializable {
     
     private String favoriteTune;
 

@@ -1,6 +1,8 @@
 package data;
 
-public class Parakeet extends Bird {
+import java.io.Serializable;
+
+public class Parakeet extends Bird implements Serializable{
     
     private String chirping;
 

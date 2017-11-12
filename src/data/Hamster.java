@@ -1,6 +1,8 @@
 package data;
 
-public class Hamster extends SmallPet{
+import java.io.Serializable;
+
+public class Hamster extends SmallPet implements Serializable {
     
     private String hair;
 

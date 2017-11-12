@@ -1,6 +1,8 @@
 package data;
 
-public abstract class Bird extends Animal{
+import java.io.Serializable;
+
+public abstract class Bird extends Animal implements Serializable{
     
     private String color;
 

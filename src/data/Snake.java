@@ -1,6 +1,8 @@
 package data;
 
-public class Snake extends Reptile {
+import java.io.Serializable;
+
+public class Snake extends Reptile implements Serializable{
     
     private boolean venomous;
 
