@@ -2,9 +2,11 @@ package business;
 
 import data.Animal;
 import data.*;
+import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.util.ArrayList;
 import java.util.Scanner;
@@ -15,48 +17,79 @@ public class PetStoreTest {
     
     
     public static void main(String[] args) {
+        
+        
         FileOutputStream fileStream =null;
-        Scanner scanner = new Scanner(System.in);
+        FileInputStream fileStrem = null;
+        Scanner scanner = new Scanner(System.in);    
         ArrayList<Animal> Animals = new ArrayList<>();
-        try{
-        fileStream = new FileOutputStream("C:\\Users\\ferre\\Documents\\NetBeansProjects\\TiendaDeAnimales\\mascotas.db");
-        ObjectOutputStream os = new ObjectOutputStream(fileStream);
-        
-        
-        Animal animal1 = new Canary("the four seasons of Vivaldi","Green","Piolin",300000);
-        Animals.add(animal1);
-        Animal animal2 = new Frog("Flies","Soft","Leonardo",231000);
-        Animals.add(animal2);
-        Animal animal3 = new GuineaPig("5 to 7 years",10,"Charlie",400000);
-        Animals.add(animal3);
-        Animal animal4 = new Hamster("Long",5,"Hamtaro",100000);
-        Animals.add(animal4);
-        Animal animal5 = new Parakeet("Loud","Blue","Claus",250500);
-        Animals.add(animal5);
-        Animal animal6 = new Snake(true,"Soft","Stampy",342000);
-        Animals.add(animal6);
-        
-        os.writeObject(animal1);
-        os.writeObject(animal2);
-        os.writeObject(animal3);
-        os.writeObject(animal4);
-        os.writeObject(animal5);
-        os.writeObject(animal6);
-        
-            System.out.println(animal1);
-        
-        os.close();
-        }catch(FileNotFoundException exception){} catch (IOException ex) {
-            Logger.getLogger(PetStoreTest.class.getName()).log(Level.SEVERE, null, ex);
-        }
         
         do{
-            ui.PetStoreUI.ListOfAnimals(Animals);
+            ui.PetStoreUI.MainMenu();
             int a = scanner.nextInt();
             if(a==0){
                 System.exit(0);
+            }else if(a==1){
+                ui.PetStoreUI.ListOfAnimals(Animals);
+                try{
+                    fileStrem = new FileInputStream("C:\\Users\\ferre\\Documents\\NetBeansProjects\\TiendaDeAnimales\\mascotas.db");
+                    ObjectInputStream is = new ObjectInputStream(fileStrem);
+                    for(int j = 0 ; j<=6;j++){
+                            Animal animal;
+                            animal = (Animal) is.readObject();
+                            System.out.println(animal);
+                    }
+                    is.close();
+                    fileStrem.close();
+
+                    
+                }catch (FileNotFoundException exception) {
+                }catch (IOException ex) {
+                Logger.getLogger(PetStoreTest.class.getName()).log(Level.SEVERE, null, ex);
+                }catch (ClassNotFoundException c) {
+                    System.out.println("Class not found.");
+                    c.printStackTrace();
+                    return;
+                };
+                
+                
+                
+            }else if(a==2){
+                
+            }else if(a==3){
+                ui.PetStoreUI.TypeOfAnimal();
+                Snake snake = new Snake();
+                int b = scanner.nextInt();
+                if(b==1){
+                    System.out.println("Creating canary: ");
+                }else if(b==2){
+                    System.out.println("Creating Frog: ");
+                }else if(b==3){
+                    System.out.println("Creating Guinea Pig: ");
+                }else if(b==4){
+                    System.out.println("Creating Hamster: ");
+                }else if(b==5){
+                    System.out.println("Creating Parakeet: ");
+                }else if(b==6){
+                    System.out.println("Creating Snake: ");
+                    System.out.println("What will be my name: ");
+                    String c=scanner.next();
+                    snake.setName(c);
+                    System.out.println("What kind of skin do I have? ");
+                    c=scanner.next();
+                    snake.setSkin(c);
+                    System.out.println("Am I venomous? true or false");
+                    snake.setVenomous(scanner.nextBoolean());
+                }
+                try{
+                fileStream = new FileOutputStream("C:\\Users\\ferre\\Documents\\NetBeansProjects\\TiendaDeAnimales\\mascotas.db");
+                ObjectOutputStream os = new ObjectOutputStream(fileStream);
+                os.writeObject(snake);
+                os.close();
+                fileStream.close();
+                }catch(FileNotFoundException exception){} catch(IOException exception){};
             }
-            ui.PetStoreUI.InformationOfAnimal(a, Animals);
+            
         }while(true);
     }
 }
