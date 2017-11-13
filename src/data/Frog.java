@@ -1,8 +1,12 @@
 package data;
 
+import java.io.FileWriter;
+import java.io.IOException;
 import java.io.Serializable;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
-public class Frog extends Reptile implements Serializable {
+public class Frog extends Reptile{
     
     private String food;
 
@@ -24,4 +28,13 @@ public class Frog extends Reptile implements Serializable {
     public String toString() {
         return super.toString().concat(" and my favorite food is " + food + ".");
     }
+
+    @Override
+    public void savecsv(FileWriter writer) {
+        try {
+            writer.write(getName() + "," + getPrice() + "," + getSkin() + "," + getFood()+System.lineSeparator());
+        } catch (IOException ex) {
+            Logger.getLogger(Frog.class.getName()).log(Level.SEVERE, null, ex);
+        }
+}
 }

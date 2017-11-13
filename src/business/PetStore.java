@@ -6,7 +6,7 @@ import data.*;
 import java.util.ArrayList;
 
 
-public class PetStoreTest {
+public class PetStore {
         
         private static ArrayList<Animal> animals ;
         private static FilePet file;
@@ -14,7 +14,6 @@ public class PetStoreTest {
     public static void main(String[] args) {
         file = new FilePet();
         animals=file.loadPet();
-            
         program();
     }
     public static void program(){ 
@@ -30,7 +29,7 @@ public class PetStoreTest {
                     });                    
                 break;
                 case 2:
-          
+                    file.exportPet();
                 break;
                 case 3:
                     switch(UI.TypeOfAnimal()){

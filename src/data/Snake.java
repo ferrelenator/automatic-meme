@@ -1,8 +1,11 @@
 package data;
 
-import java.io.Serializable;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
-public class Snake extends Reptile implements Serializable{
+public class Snake extends Reptile{
     
     private boolean venomous;
 
@@ -30,6 +33,15 @@ public class Snake extends Reptile implements Serializable{
             return super.toString().concat(" and I'm not venomous");
         }
     }
+
+    @Override
+    public void savecsv(FileWriter writer) {
+        try {
+            writer.write(getName() + "," + getPrice() + "," + getSkin() + "," + isVenomous()+System.lineSeparator());
+        } catch (IOException ex) {
+            Logger.getLogger(Snake.class.getName()).log(Level.SEVERE, null, ex);
+        }
+}
     
     
     

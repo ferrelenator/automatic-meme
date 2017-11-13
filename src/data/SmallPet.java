@@ -2,7 +2,7 @@ package data;
 
 import java.io.Serializable;
 
-public abstract class SmallPet extends Animal implements Serializable{
+public abstract class SmallPet extends Animal{
     
     private int size;
 

@@ -1,8 +1,12 @@
 package data;
 
+import java.io.FileWriter;
+import java.io.IOException;
 import java.io.Serializable;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
-public class Hamster extends SmallPet implements Serializable {
+public class Hamster extends SmallPet{
     
     private String hair;
 
@@ -26,6 +30,15 @@ public class Hamster extends SmallPet implements Serializable {
         return super.toString().concat(" and my hair is " + hair + "." );
         
     }
+
+    @Override
+    public void savecsv(FileWriter writer) {
+        try {
+            writer.write(getName() + "," + getPrice() + "," + getSize() + "," + getHair()+System.lineSeparator());
+        } catch (IOException ex) {
+            Logger.getLogger(Hamster.class.getName()).log(Level.SEVERE, null, ex);
+        }
+}
     
     
 }

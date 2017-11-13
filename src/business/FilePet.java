@@ -21,7 +21,6 @@ import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.io.Serializable;
 import java.util.ArrayList;
-import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -81,33 +80,11 @@ public class FilePet implements Serializable {
     public void exportPet() {
         try {
             writer = new FileWriter("src/DataBase/MyPlainText.csv");
-            writer.write("Name" + ", " + "Price" + ", " + "Main Characteristic" + ", " + "Secondary Characteristic");
-
+            writer.write("Name" + "," + "Price" + "," + "Main Characteristic" + "," + "Secondary Characteristic"+System.lineSeparator());
             animals.forEach((animal) -> {
-                try {
-                    if (animal instanceof Canary) {
-                        Canary canary = (Canary) animal;
-                        writer.write(canary.getName() + ", " + canary.getPrice() + ", " + canary.getColor() + ", " + canary.getFavoriteTune());
-                    } else if (animal instanceof Frog) {
-                        Frog frog = (Frog) animal;
-                        writer.write(frog.getName() + ", " + frog.getPrice() + ", " + frog.getSkin() + ", " + frog.getFood());
-                    } else if (animal instanceof GuineaPig) {
-                        GuineaPig guineapig = (GuineaPig) animal;
-                        writer.write(guineapig.getName() + ", " + guineapig.getPrice() + ", " + guineapig.getSize() + ", " + guineapig.getLifeSpan());
-                    } else if (animal instanceof Hamster) {
-                        Hamster hamster = (Hamster) animal;
-                        writer.write(hamster.getName() + ", " + hamster.getPrice() + ", " + hamster.getSize() + ", " + hamster.getHair());
-                    } else if (animal instanceof Parakeet) {
-                        Parakeet parakeet = (Parakeet) animal;
-                        writer.write(parakeet.getName() + "," + parakeet.getPrice() + "," + parakeet.getColor() + ", " + parakeet.getChirping());
-                    } else if (animal instanceof Snake) {
-                        Snake snake = (Snake) animal;
-                        writer.write(snake.getName() + ", " + snake.getPrice() + ", " + snake.getSkin() + ", " + snake.isVenomous());
-                    }
-                } catch (IOException exception) {
-                };
+               animal.savecsv(writer); 
             });
-
+            writer.close();
         } catch (IOException ex) {
         }
     }

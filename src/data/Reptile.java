@@ -2,7 +2,7 @@ package data;
 
 import java.io.Serializable;
 
-public abstract class Reptile extends Animal implements Serializable {
+public abstract class Reptile extends Animal{
     
     private String skin;
 

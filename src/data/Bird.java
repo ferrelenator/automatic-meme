@@ -2,7 +2,7 @@ package data;
 
 import java.io.Serializable;
 
-public abstract class Bird extends Animal implements Serializable{
+public abstract class Bird extends Animal{
     
     private String color;
 

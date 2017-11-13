@@ -1,8 +1,12 @@
 package data;
 
-import java.io.Serializable;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
-public class Canary extends Bird implements Serializable {
+
+public class Canary extends Bird{
     
     private String favoriteTune;
 
@@ -24,4 +28,13 @@ public class Canary extends Bird implements Serializable {
     public String toString() {
         return super.toString().concat(" and my favorite tune is " + favoriteTune + ".");
     }        
+
+    @Override
+    public void savecsv(FileWriter writer) {
+        try {
+            writer.write(getName() + "," + getPrice() + "," + getColor() + "," + getFavoriteTune()+System.lineSeparator());
+        } catch (IOException ex) {
+            Logger.getLogger(Canary.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
 }

@@ -1,8 +1,12 @@
 package data;
 
+import java.io.FileWriter;
+import java.io.IOException;
 import java.io.Serializable;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
-public class GuineaPig extends SmallPet implements Serializable{
+public class GuineaPig extends SmallPet{
     
     private String lifeSpan;
 
@@ -25,6 +29,15 @@ public class GuineaPig extends SmallPet implements Serializable{
         
         return super.toString().concat(", and my lifespan is about " + lifeSpan );
                 
+    }
+
+    @Override
+    public void savecsv(FileWriter writer) {
+        try {
+            writer.write(getName() + "," + getPrice() + "," + getSize() + "," + getLifeSpan()+System.lineSeparator());
+        } catch (IOException ex) {
+            Logger.getLogger(GuineaPig.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
     
     
