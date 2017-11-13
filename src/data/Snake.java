@@ -11,6 +11,8 @@ public class Snake extends Reptile implements Serializable{
         this.venomous = venomous;
     }
     
+    public Snake(){};
+    
     public boolean isVenomous() {
         return venomous;
     }

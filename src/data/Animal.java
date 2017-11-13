@@ -17,6 +17,14 @@ public abstract class Animal implements Serializable {
         return name;
     }
 
+    public int getPrice() {
+        return price;
+    }
+
+    public void setPrice(int price) {
+        this.price = price;
+    }
+
     public void setName(String name) {
         this.name = name;
     }
