@@ -9,6 +9,7 @@ import data.Animal;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
+import java.io.FileWriter;
 import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
@@ -28,6 +29,7 @@ public class FilePet implements Serializable{
     private FileInputStream fileStrem ;
     private ArrayList<Animal> animals;
     private boolean load,save;
+    private FileWriter writer;
     
     public FilePet(){
         
@@ -67,6 +69,18 @@ public class FilePet implements Serializable{
                 }catch(FileNotFoundException exception){} catch(IOException exception){}
     }
 
-   
+    public void exportPet(){
+        try {
+            writer = new FileWriter("src/DataBase/MyPlainText.csv");
+            
+            animals.forEach((animal)-> {
+                try {
+                         writer.write(animal.toString());
+                         }catch (IOException exception){};
+                    });                    
+            
+        }catch(IOException ex){}
+    }
+    
     
 }

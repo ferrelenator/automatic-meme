@@ -27,7 +27,6 @@ public class PetStoreTest {
                  case 1:
                      animals.forEach((animal) -> {
                          System.out.println("ID:"+animals.indexOf(animal)+" "+animal.toString());
-                         UI.PrintPet(animal);
                     });                    
                 break;
                 case 2:
@@ -36,22 +35,22 @@ public class PetStoreTest {
                 case 3:
                     switch(UI.TypeOfAnimal()){
                         case 1:
-                            animals.add(new Canary("...", "Red", "Canarius", 150));
+                            animals.add(new Canary("...", "Red", "canary", 150));
                             break;
                         case 2:
-                          //animals.add()
+                            animals.add(new Frog("flies","soft","Frogger",200));
                             break;
                         case 3:
-                          //animals.add()
+                            animals.add(new GuineaPig("5 years",20,"Charlie",300));
                             break;
                         case 4:
-                          //animals.add()
+                            animals.add(new Hamster("short",10,"Darius",100));
                             break;
                         case 5:
-                          //animals.add()
+                            animals.add(new Parakeet("loud","Blue","Prince",250));
                             break;
                         case 6:
-                          //animals.add()
+                            animals.add(new Snake(true,"Dry","Slinky",350));
                             break;
                     }   
             }
