@@ -6,12 +6,6 @@
 package business;
 
 import data.Animal;
-import data.Canary;
-import data.Frog;
-import data.GuineaPig;
-import data.Hamster;
-import data.Parakeet;
-import data.Snake;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
@@ -26,7 +20,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JFileChooser;
 import javax.swing.JFrame;
-import ui.NewJFrame;
+import ui.UISwing;
 
 /**
  *
@@ -34,12 +28,10 @@ import ui.NewJFrame;
  */
 public class FilePet implements Serializable {
 
-    public JFrame JFrame;
     private FileOutputStream fileStream;
     private FileInputStream fileStrem;
     private ArrayList<Animal> animals;
-    private boolean load, save;
-    private FileWriter writer;
+    
 
     public FilePet() {
 
@@ -82,30 +74,6 @@ public class FilePet implements Serializable {
         }
     }
 
-    public void exportPet() {
-        try {
-            JFrame = new NewJFrame();
-
-            JFileChooser Chooser= new JFileChooser();
-            Chooser.setFileSelectionMode(JFileChooser.DIRECTORIES_ONLY);
-            JFrame.add(Chooser);
-
-            
-            int rt = Chooser.showOpenDialog(JFrame); //someframe is  JFrame
-            
-            if (rt == JFileChooser.APPROVE_OPTION) {
-                
-                File file = Chooser.getSelectedFile(); //Do anything u want with this file
-                writer = new FileWriter(file+"PlainTextFile.csv");
-                writer.write("Name" + "," + "Price" + "," + "Main Characteristic" + "," + "Secondary Characteristic" + System.lineSeparator());
-                animals.forEach((animal) -> {
-                animal.savecsv(writer);
-            });
-            writer.close();
-            }
-            
-        } catch (IOException ex) {
-        }
-    }
+    
 
 }

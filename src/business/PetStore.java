@@ -4,35 +4,46 @@ import data.Animal;
 import ui.UI;
 import data.*;
 import java.util.ArrayList;
+import ui.UISwing;
+import ui.UIText;
 
 
 public class PetStore {
         
         private static ArrayList<Animal> animals ;
         private static FilePet file;
+        private static UI ui;
         
+   private static void selectUI(String[] args) {
+        if (args.length == 0) {
+            ui = new UISwing();
+        } else if (args[0].equals("text")) {
+            ui = new UIText();
+        } else {
+            ui = new UISwing();
+        }
+    }
+
     public static void main(String[] args) {
+        selectUI(args);
+        
         file = new FilePet();
         animals=file.loadPet();
+        
         program();
     }
     public static void program(){ 
         do{
-            switch(UI.MainMenu()){
+            switch(ui.MainMenu(animals)){
                 case 0:
                     file.savePet();
                     System.exit(0); 
                 break;
-                 case 1:
-                     animals.forEach((animal) -> {
-                         System.out.println("ID:"+animals.indexOf(animal)+" "+animal.toString());
-                    });                    
+                case 1:
+                    ui.exportPet(animals);
                 break;
                 case 2:
-                    file.exportPet();
-                break;
-                case 3:
-                    switch(UI.TypeOfAnimal()){
+                    switch(ui.TypeOfAnimal()){
                         case 1:
                             animals.add(new Canary("...", "Red", "canary", 150));
                             break;
@@ -50,6 +61,8 @@ public class PetStore {
                             break;
                         case 6:
                             animals.add(new Snake(true,"Dry","Slinky",350));
+                            break;
+                        case 0:
                             break;
                     }   
             }

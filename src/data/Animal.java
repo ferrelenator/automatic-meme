@@ -1,8 +1,8 @@
 package data;
 
 import java.io.Serializable;
-import business.CsvPet;
-public abstract class Animal implements Serializable,CsvPet {
+import java.io.FileWriter;
+public abstract class Animal implements Serializable {
     private String name;
     private int price;
     
@@ -34,5 +34,6 @@ public abstract class Animal implements Serializable,CsvPet {
         return "Hi, my name is " + name  + " " + "and my price is $" + price + " COP";
     }
 
+    public void savecsv(FileWriter write){};
     
 }
